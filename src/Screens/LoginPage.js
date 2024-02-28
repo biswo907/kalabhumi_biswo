@@ -15,9 +15,9 @@ import {
   Platform,
   // ToastAndroid,
 } from 'react-native';
-import OTPPage from '../Screens/OTPPage';
-import {useDispatch} from 'react-redux';
-import {loginmobile} from '../redux/features/auth/authSlice';
+// import {useDispatch} from 'react-redux';
+// import {loginmobile} from '../redux/features/auth/authSlice';
+import {generateOTP} from '../services/Services';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {Buffer} from 'buffer';
 import Video from 'react-native-video';
@@ -27,6 +27,7 @@ import Animated, {
   BounceInDown,
   withTiming,
 } from 'react-native-reanimated';
+
 const phoneInputPattern = /[6789][0-9]{9}/;
 const LoginPage = ({navigation}) => {
   const [username, setUsername] = useState('');
@@ -34,7 +35,8 @@ const LoginPage = ({navigation}) => {
   const [otpCounter, setOtpCounter] = useState(60);
   const [resendOtp, setResendOtp] = useState(false);
   const [startCount, setStartCount] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  // const {signIn} = useAuthorization();
   const [isLoader, setIsLoader] = useState(false);
   const [backButtonIsPressed, setBackButtonIsPressed] = useState(false);
   useEffect(() => {
@@ -126,25 +128,26 @@ const LoginPage = ({navigation}) => {
       var postdata = {userName: username};
       var obj = JSON.stringify(postdata);
       var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
-      dispatch(loginmobile(postbase64Data))
+      generateOTP(postbase64Data)
         .then(data => {
+          console.log('OTPRESPONSE-----------', data);
           setStartCount(true);
           setOtpCounter(60);
-          if (data.payload.outcome === true) {
+          if (data.outcome === true) {
             setIsLoader(false);
             // Alert.alert('Success', data.payload.message);
             if (Platform.OS === 'android') {
-              ToastAndroid.show(data.payload.message, ToastAndroid.SHORT);
+              ToastAndroid.show(data.message, ToastAndroid.SHORT);
             } else {
-              AlertIOS.alert(data.payload.message);
+              AlertIOS.alert(data.message);
             }
             navigation.navigate('OTPPage', {
-              password: data.payload.data,
+              password: data.data,
               userName: username,
             });
             setUsername('');
           } else {
-            Alert.alert('Error', data.payload.message);
+            Alert.alert('Error', data.message);
             setIsLoader(false);
             setResendOtp(true);
           }

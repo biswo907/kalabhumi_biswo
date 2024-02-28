@@ -17,12 +17,12 @@ import {
 import styles from './scanStyle';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {
-  fetchArtifactData,
-  fetchRatingDataByQrcode,
-} from '../redux/features/qrcode/qrcodeSlice';
+// import {
+//   fetchArtifactData,
+//   fetchRatingDataByQrcode,
+// } from '../redux/features/qrcode/qrcodeSlice';
 import {Buffer} from 'buffer';
-import {useSelector, useDispatch} from 'react-redux';
+// import {useSelector, useDispatch} from 'react-redux';
 import {Rating, AirbnbRating} from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {useIsFocused} from '@react-navigation/native';
@@ -32,12 +32,18 @@ import {APIURL} from '../constants/resource.jsx';
 const imageBaseUrl = APIURL.imageBaseUrl;
 import Slideshow from 'react-native-image-slider-show';
 import YoutubePlayer from 'react-native-youtube-iframe';
-import {saveReview, fetchUser} from '../redux/features/auth/authSlice';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import {saveReview, fetchUser} from '../redux/features/auth/authSlice';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Sound from 'react-native-sound';
 import {AudioPlayer} from 'react-native-simple-audio-player';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {
+  saveReview,
+  getRatingByQRCode,
+  getUserProfile,
+  getArtifactData,
+} from '../services/Services';
 import Video from 'react-native-video';
 import videobg from '../videos/bg13.mp4';
 const Artifact = ({route, navigation}) => {
@@ -53,7 +59,7 @@ const Artifact = ({route, navigation}) => {
   const [userMobile, setUserMobile] = useState('');
   const [isReviewBtn, setIsReviewBtn] = useState('none');
   const [ratingStar, setRatingStar] = useState('');
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const {token, artifactId, qrCodeStrss, gallaryHeaderName} = route.params;
   const [artifactDetials, setArtifactDetials] = useState('');
   const [html, setHtml] = useState('');
@@ -118,18 +124,18 @@ const Artifact = ({route, navigation}) => {
       var obj = JSON.stringify(postdata);
       var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
 
-      dispatch(saveReview({postbase64Data, token}))
+      saveReview(postbase64Data, token)
         .then(data => {
           setIsLoader(false);
-          if (data.payload.outcome == true) {
-            //Alert.alert('Success', data.payload.message);
+          if (data.outcome == true) {
+            //Alert.alert('Success', data.message);
             handleRatingCall();
             setIsReviewBtn('none');
             setComments('');
             setDefaultRating(0);
             setRatingStar('');
           } else {
-            Alert.alert('Error', data.payload.message);
+            Alert.alert('Error', data.message);
           }
         })
         .catch(error => {
@@ -145,13 +151,13 @@ const Artifact = ({route, navigation}) => {
     var obj = JSON.stringify(postdata);
     var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
     console.log('PRADHAN>>>>>>..', postbase64Data);
-    dispatch(fetchRatingDataByQrcode({postbase64Data, token}))
+    getRatingByQRCode(postbase64Data, token)
       .then(data => {
-        console.log('fetchRatingDataByQrcode..', data.payload.data);
-        if (data.payload.outcome == true) {
-          setRatingList(data.payload.data);
+        console.log('fetchRatingDataByQrcode..', data.data);
+        if (data.outcome == true) {
+          setRatingList(data.data);
         } else {
-          Alert.alert('Error', data.payload.message);
+          Alert.alert('Error', data.message);
         }
       })
       .catch(error => {
@@ -176,10 +182,10 @@ const Artifact = ({route, navigation}) => {
     return true;
   };
   const handleFetchUserDetails = () => {
-    dispatch(fetchUser(token))
+    getUserProfile(token)
       .then(data => {
-        if (data.payload.outcome == true) {
-          var userGetProfileData = data.payload.data;
+        if (data.outcome == true) {
+          var userGetProfileData = data.data;
           console.log('RRRRRRRRRRRRRRRRRRRRRR', userGetProfileData.firstName);
           setUserProfileName(userGetProfileData.firstName);
         }
@@ -196,33 +202,33 @@ const Artifact = ({route, navigation}) => {
       setArtifactDetials('');
       setRatingList([]);
       handleRatingCall();
-      AsyncStorage.getItem('profileName')
-        .then(uname => {
-          setUserProfileName(uname);
-        })
-        .then(res => {});
-      AsyncStorage.getItem('userToken')
-        .then(token => {
-          setUserToken(token);
-        })
-        .then(res => {});
+      // AsyncStorage.getItem('profileName')
+      //   .then(uname => {
+      //     setUserProfileName(uname);
+      //   })
+      //   .then(res => {});
+      // AsyncStorage.getItem('userToken')
+      //   .then(token => {
+      //     setUserToken(token);
+      //   })
+      //   .then(res => {});
 
-      AsyncStorage.getItem('userMobile')
-        .then(mobile => {
-          setUserMobile(mobile);
-        })
-        .then(res => {});
+      // AsyncStorage.getItem('userMobile')
+      //   .then(mobile => {
+      //     setUserMobile(mobile);
+      //   })
+      //   .then(res => {});
 
       var artifactIds = artifactId.toString();
       var postdata = {artifactId: artifactIds};
       var obj = JSON.stringify(postdata);
       var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
-      dispatch(fetchArtifactData({postbase64Data, token}))
+      getArtifactData(postbase64Data, token)
         .then(data => {
           console.log('fetchArtifactData', data.payload);
-          if (data.payload.outcome == true && mounted) {
-            setArtifactDetials(data.payload.data.artifact);
-            var artifacData = data.payload.data.artifact;
+          if (data.outcome == true && mounted) {
+            setArtifactDetials(data.data.artifact);
+            var artifacData = data.data.artifact;
             setHtml(artifacData.artifactDescriptionEn);
             console.log(artifacData);
             if (artifacData.artifactImages > 0) {
@@ -242,7 +248,7 @@ const Artifact = ({route, navigation}) => {
               setArtifactVideos(artifacData.artifactDescriptionEn);
             }
           } else {
-            Alert.alert('Error', data.payload.message);
+            Alert.alert('Error', data.message);
           }
         })
         .catch(error => {

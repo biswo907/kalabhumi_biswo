@@ -71,7 +71,7 @@ export const logout = createAsyncThunk('logout', async token => {
 });
 
 export const fetchUser = createAsyncThunk('fetchUser', async token => {
-  console.log('fetchUser token: ', token);
+  // console.log('fetchUser token: ', token);
   try {
     const requestOptions = {
       method: 'POST',
@@ -86,7 +86,7 @@ export const fetchUser = createAsyncThunk('fetchUser', async token => {
     };
     const response = await fetch(apiUrl + '/user/get-profile', requestOptions);
     const responseData = await response.json();
-    console.log('GetProfile response', responseData);
+    // console.log('GetProfile response', responseData);
     return responseData;
   } catch (error) {
     console.log('error Profile', error);
@@ -94,7 +94,7 @@ export const fetchUser = createAsyncThunk('fetchUser', async token => {
 });
 
 export const fetchUserSSS = createAsyncThunk('fetchUser', async token => {
-  console.log('fetchUser token: ', token);
+  // console.log('fetchUser token: ', token);
   try {
     // console.log("user in api call: ", data.token);
     const response = await axios({

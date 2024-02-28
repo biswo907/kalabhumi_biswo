@@ -16,12 +16,12 @@ import {
 import styles from './scanStyle';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {
-  fetchSectionData,
-  fetchRatingDataByQrcode,
-} from '../redux/features/qrcode/qrcodeSlice';
+// import {
+//   fetchSectionData,
+//   fetchRatingDataByQrcode,
+// } from '../redux/features/qrcode/qrcodeSlice';
 import {Buffer} from 'buffer';
-import {useSelector, useDispatch} from 'react-redux';
+// import {useSelector, useDispatch} from 'react-redux';
 import {Rating, AirbnbRating} from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {useIsFocused} from '@react-navigation/native';
@@ -29,17 +29,23 @@ import RenderHTML from 'react-native-render-html';
 import Slideshow from 'react-native-image-slider-show';
 import {APIURL} from '../constants/resource.jsx';
 import YoutubePlayer from 'react-native-youtube-iframe';
-import {saveReview, fetchUser} from '../redux/features/auth/authSlice';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import {saveReview, fetchUser} from '../redux/features/auth/authSlice';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Sound from 'react-native-sound';
 import {AudioPlayer} from 'react-native-simple-audio-player';
 import Video from 'react-native-video';
 import videobg from '../videos/bg13.mp4';
+import {
+  saveReview,
+  getRatingByQRCode,
+  getUserProfile,
+  getSectionData,
+} from '../services/Services';
 const imageBaseUrl = APIURL.imageBaseUrl;
 
 const Groups = ({route, navigation}) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [scan, setScan] = useState('');
   const [comments, setComments] = useState('');
   const [userProfileName, setUserProfileName] = useState('');
@@ -187,18 +193,18 @@ const Groups = ({route, navigation}) => {
       var obj = JSON.stringify(postdata);
       var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
       // console.log('PURI>>>>>>>>>...', postbase64Data);
-      dispatch(saveReview({postbase64Data, token}))
+      saveReview(postbase64Data, token)
         .then(data => {
           setIsLoader(false);
-          if (data.payload.outcome == true) {
-            Alert.alert('Success', data.payload.message);
+          if (data.outcome == true) {
+            Alert.alert('Success', data.message);
             handleRatingCallGroup();
             setIsReviewBtn('none');
             setComments('');
             setDefaultRating(0);
             setRatingStar('');
           } else {
-            Alert.alert('Error', data.payload.message);
+            Alert.alert('Error', data.message);
           }
         })
         .catch(error => {
@@ -213,13 +219,13 @@ const Groups = ({route, navigation}) => {
     var postdata = {qrCode: qrCodeStr};
     var obj = JSON.stringify(postdata);
     var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
-    dispatch(fetchRatingDataByQrcode({postbase64Data, token}))
+    getRatingByQRCode(postbase64Data, token)
       .then(data => {
-        console.log('fetchRatingDataByQrcode..', data.payload.data);
-        if (data.payload.outcome == true) {
-          setRatingList(data.payload.data);
+        console.log('fetchRatingDataByQrcode..', data.data);
+        if (data.outcome == true) {
+          setRatingList(data.data);
         } else {
-          Alert.alert('Error', data.payload.message);
+          Alert.alert('Error', data.message);
         }
       })
       .catch(error => {
@@ -246,10 +252,10 @@ const Groups = ({route, navigation}) => {
   };
 
   const handleFetchUserDetails = () => {
-    dispatch(fetchUser(token))
+    getUserProfile(token)
       .then(data => {
-        if (data.payload.outcome == true) {
-          var userGetProfileData = data.payload.data;
+        if (data.outcome == true) {
+          var userGetProfileData = data.data;
           console.log('RRRRRRRRRRRRRRRRRRRRRR', userGetProfileData.firstName);
           setUserProfileName(userGetProfileData.firstName);
         }
@@ -268,28 +274,28 @@ const Groups = ({route, navigation}) => {
         setRatingList([]);
         setArtifactList([]);
         handleRatingCallGroup();
-        AsyncStorage.getItem('userToken')
-          .then(token => {
-            setUserToken(token);
-          })
-          .then(res => {});
+        // AsyncStorage.getItem('userToken')
+        //   .then(token => {
+        //     setUserToken(token);
+        //   })
+        //   .then(res => {});
 
-        AsyncStorage.getItem('userMobile')
-          .then(mobile => {
-            setUserMobile(mobile);
-          })
-          .then(res => {});
+        // AsyncStorage.getItem('userMobile')
+        //   .then(mobile => {
+        //     setUserMobile(mobile);
+        //   })
+        //   .then(res => {});
         var gallerySectionIds = gallerySectionId.toString();
         var postdata = {gallerySectionId: gallerySectionIds};
         var obj = JSON.stringify(postdata);
         var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
-        dispatch(fetchSectionData({postbase64Data, token}))
+        getSectionData(postbase64Data, token)
           .then(data => {
             console.log('fetchSectionData', data.payload);
-            if (data.payload.outcome == true) {
-              setArtifactList(data.payload.data.artifactList);
+            if (data.outcome == true) {
+              setArtifactList(data.data.artifactList);
             } else {
-              Alert.alert('Error', data.payload.message);
+              Alert.alert('Error', data.message);
             }
           })
           .catch(error => {

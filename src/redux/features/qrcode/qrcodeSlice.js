@@ -9,7 +9,7 @@ const apiUrl = APIURL.apiUrl;
 export const fetchDataByQrcode = createAsyncThunk(
   'fetchDataByQrcode',
   async data => {
-    console.log('fetchUser token: ', data.token);
+    // console.log('fetchUser token: ', data.token);
     console.log('data.postbase64Data: ', data.postbase64Data);
     const response = await axios({
       method: 'post',
@@ -28,7 +28,7 @@ export const fetchDataByQrcode = createAsyncThunk(
 export const fetchSectionData = createAsyncThunk(
   'fetchSectionData',
   async data => {
-    console.log('fetchUser token: ', data.token);
+    // console.log('fetchUser token: ', data.token);
     console.log('data.postbase64Data: ', data.postbase64Data);
     const response = await axios({
       method: 'post',

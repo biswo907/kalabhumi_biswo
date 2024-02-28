@@ -110,7 +110,7 @@ const ProfilePage = ({route, navigation}) => {
         .then(data => {
           if (data.payload.outcome == true) {
             var userGetProfileData = data.payload.data;
-            console.log('userProfileData', data.payload);
+            // console.log('userProfileData', data.payload);
             setFirstName(userGetProfileData.firstName);
             setLastName(userGetProfileData.lastName);
             var firstName = '';

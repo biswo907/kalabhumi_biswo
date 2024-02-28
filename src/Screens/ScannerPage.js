@@ -16,7 +16,8 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 import styles from './scanStyle';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {fetchDataByQrcode} from '../redux/features/qrcode/qrcodeSlice';
+import {getQRCodeData} from '../services/Services';
+// import {fetchDataByQrcode} from '../redux/features/qrcode/qrcodeSlice';
 import {Buffer} from 'buffer';
 import {useSelector, useDispatch} from 'react-redux';
 const imageBaseUrl = 'http://209.97.136.18:8080/kalabhoomi';
@@ -27,7 +28,7 @@ const ScannerPage = ({route, navigation}) => {
   const [scan, setScan] = useState('');
   const [ScanResult, setScanResult] = useState('');
   const [result, setResult] = useState('');
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const {token} = route.params;
   const [isLoader, setIsLoader] = useState(false);
   //const token_data = useSelector(state => state.auth.login);
@@ -53,24 +54,24 @@ const ScannerPage = ({route, navigation}) => {
     setScanResult(true);
     var sp = e.data.split('/');
     var theCode = sp[sp.length - 1];
-    // console.log(sp[sp.length - 1+]);
+    // console.log('thecode----------', theCode);
     var postdata = {qrCode: theCode};
     var obj = JSON.stringify(postdata);
     var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
-    // console.log('AJAY BASE^$........', postbase64Data);
-    dispatch(fetchDataByQrcode({postbase64Data, token}))
-      .then(data => {
-        console.log('DATA PAYLOAD', data);
+    console.log('AJAY BASE^$........', postbase64Data);
+    getQRCodeData(postbase64Data, token)
+      .then(response => {
+        console.log('DATA PAYLOAD', response);
         setScan(true);
         setScanResult(false);
-        // alert(data.payload.data.qrTypeCode);
-        if (data.payload.outcome === true) {
+        // alert(response.data.qrTypeCode);
+        if (response.outcome === true) {
           if (
-            data.payload.data.qrTypeCode == 'GALLERY' ||
-            data.payload.data.qrTypeCode == 'GALLERY_ARTIFACT'
+            response.data.qrTypeCode == 'GALLERY' ||
+            response.data.qrTypeCode == 'GALLERY_ARTIFACT'
           ) {
             //navigation.navigate('Gallery', {token: token});
-            var gallery = data.payload.data.gallery;
+            var gallery = response.data.gallery;
             var galleryId = gallery.galleryId;
             var description = gallery.galleryDescriptionEn;
             var groupImage = gallery.galleryDisplayImagePath;
@@ -79,7 +80,7 @@ const ScannerPage = ({route, navigation}) => {
             var galleryAudios = gallery.gallerySectionHindiAudios;
             var galleryVideos = gallery.gallerySectionEnglishAudios;
             var qrcodesss = e.data;
-            var gallaryHeaderName = data.payload.data.qrTypeCode;
+            var gallaryHeaderName = response.data.qrTypeCode;
 
             // let temp = [];
             // if (galleryImages.length > 0) {
@@ -99,7 +100,7 @@ const ScannerPage = ({route, navigation}) => {
               token: token,
               galleryId: galleryId,
               description: description,
-              qrTypeCode: data.payload.data.qrTypeCode,
+              qrTypeCode: response.data.qrTypeCode,
               groupImage: groupImage,
               gallerySectionImages: galleryOdiaA,
               galleryName: galleryNameEn,
@@ -108,9 +109,9 @@ const ScannerPage = ({route, navigation}) => {
               qrCodeGallary: qrcodesss,
               gallaryHeaderName: gallaryHeaderName,
             });
-          } else if (data.payload.data.qrTypeCode == 'SECTION') {
-            var section = data.payload.data.gallerySection;
-            //  console.log('data.payload.data', data.payload.data);
+          } else if (response.data.qrTypeCode == 'SECTION') {
+            var section = response.data.gallerySection;
+            //  console.log('response.data', response.data);
             //console.log('section', section);
             var gallerySectionId = section.gallerySectionId;
             var description = section.gallerySectionDescriptionEn;
@@ -170,18 +171,18 @@ const ScannerPage = ({route, navigation}) => {
               qrCodeStr: QRCodeStrValue,
               gallaryHeaderName: gallaryHeaderName,
             });
-          } else if (data.payload.data.qrTypeCode == 'ARTIFACT') {
-            var artifactId = data.payload.data.artifact.artifactId;
+          } else if (response.data.qrTypeCode == 'ARTIFACT') {
+            var artifactId = response.data.artifact.artifactId;
             navigation.navigate('Artifact', {
               token: token,
               artifactId: artifactId,
               qrCodeStrss: e.data,
-              gallaryHeaderName: data.payload.data.qrTypeCode,
+              gallaryHeaderName: response.data.qrTypeCode,
             });
           }
-          // Alert.alert('Success', data.payload.message);
+          // Alert.alert('Success', response.message);
         } else {
-          Alert.alert('Error', data.payload.message);
+          Alert.alert('Error', response.message);
         }
       })
       .catch(error => {

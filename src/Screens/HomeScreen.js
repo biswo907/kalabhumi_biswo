@@ -16,18 +16,21 @@ import {
   ScrollView,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import jwt_decode from 'jwt-decode';
-import {useDispatch} from 'react-redux';
-import {Buffer} from 'buffer';
-import {logout} from '../redux/features/auth/authSlice';
-import {fetchAllGalleryData} from '../redux/features/qrcode/qrcodeSlice';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+// import jwt_decode from 'jwt-decode';
+// import {useDispatch} from 'react-redux';
+// import {Buffer} from 'buffer';
+// import {logout} from '../redux/features/auth/authSlice';
+// import {fetchAllGalleryData} from '../redux/features/qrcode/qrcodeSlice';
 import {useIsFocused} from '@react-navigation/native';
 import Slideshow from 'react-native-image-slider-show';
 import RenderHTML from 'react-native-render-html';
 import Video from 'react-native-video';
 import videobg from '../videos/bg13.mp4';
 import {APIURL} from '../constants/resource.jsx';
+import {getGalleryData} from '../services/Services';
+import {getUser, getToken} from '../context/async-storage';
+// import {getItem} from '../redux/async-storage';
 const imageBaseUrl = APIURL.imageBaseUrl;
 import Animated, {
   useSharedValue,
@@ -35,12 +38,14 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
+import {useAuthorization} from '../context/AuthProvider';
 const regex = /(<([^>]+)>)/gi;
 const HomeScreen = ({navigation}) => {
   const isFocused = useIsFocused();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const rotation = useSharedValue(0);
   const [token, setToken] = useState('');
+  const {signOut} = useAuthorization();
   const [allGalleryData, setAllGalleryData] = useState([]);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState({});
   const [isGalleryView, setIsGalleryView] = useState(false);
@@ -49,69 +54,123 @@ const HomeScreen = ({navigation}) => {
       transform: [{rotateZ: `${rotation.value}deg`}],
     };
   });
-
   useEffect(() => {
-    let mounted = true;
-    if (isFocused) {
-      // rotation.value = withRepeat(withTiming(10), 6, true);
-      AsyncStorage.getItem('userToken').then(token => {
-        if (mounted) {
-          const decoded = jwt_decode(token);
-          // console.log(decoded);
-          let unixTimestampEnd = decoded.exp;
-          let dateEnd = new Date(unixTimestampEnd * 1000) * 60000;
-          if (Date.now() >= dateEnd) {
-            handleLogout(token);
-          } else {
-            setToken(token);
-          }
-        }
-      });
-      // .then(res => {});
-      // return () => backHandler.remove();
+    var _token = getToken();
+    // console.log('token------------', _token);
+    if (typeof _token !== 'undefined') {
+      setToken(_token);
+    } else {
+      setToken('');
     }
-    return () => {
-      mounted = false; // add this
-    };
   }, [isFocused]);
   useEffect(() => {
     let mounted = true;
-    // var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
-    if (token !== '') {
-      dispatch(fetchAllGalleryData(token)).then(data => {
-        if (data.payload.outcome === true && mounted) {
-          setAllGalleryData(data.payload.data);
-          // console.log(data.payload.data[0].galleryDisplayImagePath);
-        }
+    console.log('token ............................', token);
+    token &&
+      typeof token !== 'undefined' &&
+      getGalleryData(token).then(response => {
+        response &&
+          response.data &&
+          mounted &&
+          setAllGalleryData(response.data);
       });
-    }
     return () => {
-      mounted = false; // add this
+      mounted = false;
     };
   }, [token]);
 
-  const handleLogout = token => {
-    dispatch(logout(token));
-    AsyncStorage.clear();
+  // useEffect(() => {
+  //   let mounted = true;
+  //   const initState = async () => {
+  //     try {
+  //       const authToken = await getItem();
+  //       if (authToken !== null) {
+  //         console.log('token----------', authToken);
+  //         // dispatch({type: 'SIGN_IN', token: authToken});
+  //       } else {
+  //         console.log('token----------', authToken);
+  //       }
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   };
+  //   if (mounted && isFocused) initState();
+  // }, [isFocused]);
+  // useEffect(() => {
+  //   let mounted = true;
+  //   if (isFocused) {
+  //     // rotation.value = withRepeat(withTiming(10), 6, true);
+  //     AsyncStorage.getItem('userToken').then(token => {
+  //       if (mounted) {
+  //         console.log('token----------', decoded);
+  //         const decoded = jwt_decode(token);
+  //         // console.log(decoded);
+  //         let unixTimestampEnd = decoded.exp;
+  //         let dateEnd = new Date(unixTimestampEnd * 1000) * 60000;
+  //         if (Date.now() >= dateEnd) {
+  //           handleLogout(token);
+  //         } else {
+  //           setToken(token);
+  //         }
+  //       }
+  //     });
+  //     //     // .then(res => {});
+  //     //     // return () => backHandler.remove();
+  //   }
+  //   return () => {
+  //     mounted = false; // add this
+  //   };
+  // }, [isFocused]);
+  // useEffect(() => {
+  //   let mounted = true;
+  //   // var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
+  //   if (token !== '') {
+  //     dispatch(fetchAllGalleryData(token)).then(data => {
+  //       console.log('data----------------', data);
+  //       // if (data.payload.outcome === true && mounted) {
+  //       //   setAllGalleryData(data.payload.data);
+  //       //   // console.log(data.payload.data[0].galleryDisplayImagePath);
+  //       // }
+  //     });
+  //   }
+  //   return () => {
+  //     mounted = false; // add this
+  //   };
+  // }, [token]);
+
+  // const handleLogout = token => {
+  //   dispatch(logout(token));
+  //   AsyncStorage.clear();
+  //   navigation.navigate('LoginPage');
+  // };
+  const handleLogout = () => {
+    const token = getToken();
+    console.log(token);
+    signOut();
     navigation.navigate('LoginPage');
   };
-
   const goToScanPage = () => {
-    AsyncStorage.getItem('userToken')
-      .then(token => {
-        const decoded = jwt_decode(token);
-        console.log(decoded);
-        let unixTimestampEnd = decoded.exp;
-        let dateEnd = new Date(unixTimestampEnd * 1000) * 60000;
-        if (Date.now() >= dateEnd) {
-          handleLogout(token);
-        } else {
-          navigation.navigate('ScannerPage', {
-            token: token,
-          });
-        }
-      })
-      .then(res => {});
+    navigation.navigate('ScannerPage', {
+      token: token,
+    });
+    // AsyncStorage.getItem('userToken')
+    //   .then(token => {
+    //     navigation.navigate('ScannerPage', {
+    //       token: token,
+    //     });
+    //     const decoded = jwt_decode(token);
+    //     console.log(decoded);
+    //     let unixTimestampEnd = decoded.exp;
+    //     let dateEnd = new Date(unixTimestampEnd * 1000) * 60000;
+    //     if (Date.now() >= dateEnd) {
+    //       handleLogout(token);
+    //     } else {
+    //       navigation.navigate('ScannerPage', {
+    //         token: token,
+    //       });
+    //     }
+    //   })
+    //   .then(res => {});
   };
 
   return (
@@ -200,6 +259,16 @@ const HomeScreen = ({navigation}) => {
                   }}>
                   ODISHA CRAFTS MUSEUM
                 </Text>
+                {/* <TouchableOpacity onPress={() => handleLogout()}>
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <MaterialCommunityIcons
+                      name="logout"
+                      color="#000"
+                      size={15}
+                    />
+                    <Text style={{marginLeft: 15, color: '#000'}}>Log out</Text>
+                  </View>
+                </TouchableOpacity> */}
               </View>
             </View>
             <ScrollView style={{marginBottom: 20}}>
@@ -269,7 +338,7 @@ const HomeScreen = ({navigation}) => {
                     height: 100,
                     resizeMode: 'contain',
                     borderRadius: 50,
-                    elevation: 2,
+                    // elevation: 2,
                   }}
                 />
               </View>
@@ -383,7 +452,7 @@ const HomeScreen = ({navigation}) => {
                             uri:
                               imageBaseUrl +
                               '/api/allowAll/image/viewDocuments?moduleName=GALLERY&filePath=' +
-                              gdata.galleryDisplayImagePath,
+                              encodeURIComponent(gdata.galleryDisplayImagePath.trim()).toString(),
                           }}></ImageBackground>
                         <View
                           style={{
@@ -463,7 +532,9 @@ const HomeScreen = ({navigation}) => {
                   uri:
                     imageBaseUrl +
                     '/api/allowAll/image/viewDocuments?moduleName=GALLERY&filePath=' +
-                    selectedGalleryItem.galleryDisplayImagePath,
+                    encodeURIComponent(
+                      selectedGalleryItem.galleryDisplayImagePath.trim(),
+                    ).toString(),
                 }}
               />
               <View style={{padding: 10}}>

@@ -2,54 +2,60 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, Image, FlatList, Linking} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import {logout, fetchUser} from '../redux/features/auth/authSlice';
-import {useSelector, useDispatch} from 'react-redux';
+// import {logout, fetchUser} from '../redux/features/auth/authSlice';
+// import {useSelector, useDispatch} from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useIsFocused} from '@react-navigation/native';
-
+import {useAuthorization} from '../context/AuthProvider';
+import {getToken} from '../context/async-storage';
 const SidebarScreen = ({navigation}) => {
   const isFocused = useIsFocused();
+  const {signOut} = useAuthorization();
   const [userToken, setUserToken] = useState('');
   const [userMobile, setUserMobile] = useState('');
   const [userData, setUserData] = useState({});
   //const token_data = useSelector(state => state.auth.login);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (isFocused) {
-      AsyncStorage.getItem('userToken')
-        .then(token => {
-          setUserToken(token);
-        })
-        .then(res => {});
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   if (isFocused) {
+  //     AsyncStorage.getItem('userToken')
+  //       .then(token => {
+  //         setUserToken(token);
+  //       })
+  //       .then(res => {});
 
-      AsyncStorage.getItem('userMobile')
-        .then(mobile => {
-          setUserMobile(mobile);
-        })
-        .then(res => {});
-    }
-  }, [isFocused]);
-  useEffect(() => {
-    if (isFocused) {
-      dispatch(fetchUser(userToken)).then(data => {
-        if (data.payload.outcome == true) {
-          var userGetProfileData = data.payload.data;
-          console.log('userProfileData', data.payload.data);
-          setUserData(data.payload.data);
-        }
-      });
-    }
-  }, [isFocused, userToken]);
+  //     AsyncStorage.getItem('userMobile')
+  //       .then(mobile => {
+  //         setUserMobile(mobile);
+  //       })
+  //       .then(res => {});
+  //   }
+  // }, [isFocused]);
+  // useEffect(() => {
+  //   if (isFocused) {
+  //     dispatch(fetchUser(userToken)).then(data => {
+  //       if (data.payload.outcome == true) {
+  //         var userGetProfileData = data.payload.data;
+  //         // console.log('userProfileData', data.payload.data);
+  //         setUserData(data.payload.data);
+  //       }
+  //     });
+  //   }
+  // }, [isFocused, userToken]);
 
   const handleLogout = () => {
-    AsyncStorage.getItem('userToken')
-      .then(token => {
-        dispatch(logout(token));
-        AsyncStorage.clear();
-      })
-      .then(res => {});
+    // const token = getToken();
+    // console.log(token);
+    signOut();
     navigation.navigate('LoginPage');
+    // AsyncStorage.getItem('userToken')
+    //   .then(token => {
+    //     dispatch(logout(token));
+    //     AsyncStorage.clear();
+    //   })
+    //   .then(res => {});
+    // navigation.navigate('LoginPage');
   };
 
   const handleUserProfile = () => {

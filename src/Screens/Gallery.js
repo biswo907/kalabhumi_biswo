@@ -16,12 +16,12 @@ import {
 import styles from './scanStyle';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {
-  fetchDataByQrcode,
-  fetchRatingDataByQrcode,
-} from '../redux/features/qrcode/qrcodeSlice';
+// import {
+//   fetchDataByQrcode,
+//   fetchRatingDataByQrcode,
+// } from '../redux/features/qrcode/qrcodeSlice';
 import {Buffer} from 'buffer';
-import {useSelector, useDispatch} from 'react-redux';
+// import {useSelector, useDispatch} from 'react-redux';
 import {Rating, AirbnbRating} from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import RenderHTML from 'react-native-render-html';
@@ -29,12 +29,17 @@ import Slideshow from 'react-native-image-slider-show';
 import YoutubePlayer from 'react-native-youtube-iframe';
 //const imageBaseUrl = 'http://209.97.136.18:8080/kalabhoomi';
 import {APIURL} from '../constants/resource.jsx';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {saveReview, fetchUser} from '../redux/features/auth/authSlice';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+// import {saveReview, fetchUser} from '../redux/features/auth/authSlice';
 import {useIsFocused} from '@react-navigation/native';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Sound from 'react-native-sound';
 import {AudioPlayer} from 'react-native-simple-audio-player';
+import {
+  saveReview,
+  getRatingByQRCode,
+  getUserProfile,
+} from '../services/Services';
 const imageBaseUrl = APIURL.imageBaseUrl;
 const Gallery = ({route, navigation}) => {
   const [isAudioSlider, setIsAudioSlider] = useState(true);
@@ -51,7 +56,7 @@ const Gallery = ({route, navigation}) => {
   const [userToken, setUserToken] = useState('');
   const [userMobile, setUserMobile] = useState('');
   const [isReviewBtn, setIsReviewBtn] = useState('none');
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const isFocused = useIsFocused();
   const [audioTextColor, setAudioTextColor] = useState('#fff');
   const [audioBgColor, setAudioBgColor] = useState('#A4451F');
@@ -170,18 +175,18 @@ const Gallery = ({route, navigation}) => {
       var obj = JSON.stringify(postdata);
       var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
       console.log('PURI>>>>>>>>>...', postbase64Data);
-      dispatch(saveReview({postbase64Data, token}))
+      saveReview(postbase64Data, token)
         .then(data => {
           setIsLoader(false);
-          if (data.payload.outcome == true) {
-            // Alert.alert('Success', data.payload.message);
+          if (data.outcome == true) {
+            // Alert.alert('Success', data.message);
             handleRatingCall();
             setIsReviewBtn('none');
             setComments('');
             setDefaultRating(0);
             setRatingStar('');
           } else {
-            Alert.alert('Error', data.payload.message);
+            Alert.alert('Error', data.message);
           }
         })
         .catch(error => {
@@ -197,12 +202,12 @@ const Gallery = ({route, navigation}) => {
     var postdata = {qrCode: qrCodeGallary};
     var obj = JSON.stringify(postdata);
     var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
-    dispatch(fetchRatingDataByQrcode({postbase64Data, token}))
+    getRatingByQRCode(postbase64Data, token)
       .then(data => {
-        if (data.payload.outcome == true) {
-          setRatingList(data.payload.data);
+        if (data.outcome == true) {
+          setRatingList(data.data);
         } else {
-          Alert.alert('Error', data.payload.message);
+          Alert.alert('Error', data.message);
         }
       })
       .catch(error => {
@@ -234,10 +239,10 @@ const Gallery = ({route, navigation}) => {
     return true;
   };
   const handleFetchUserDetails = () => {
-    dispatch(fetchUser(token))
+    getUserProfile(token)
       .then(data => {
-        if (data.payload.outcome == true) {
-          var userGetProfileData = data.payload.data;
+        if (data.outcome == true) {
+          var userGetProfileData = data.data;
           console.log('RRRRRRRRRRRRRRRRRRRRRR', userGetProfileData.firstName);
           setUserProfileName(userGetProfileData.firstName);
         }
@@ -254,22 +259,22 @@ const Gallery = ({route, navigation}) => {
         handleFetchUserDetails();
         setRatingList([]);
         handleRatingCall();
-        AsyncStorage.getItem('profileName')
-          .then(uname => {
-            setUserProfileName(uname);
-          })
-          .then(res => {});
-        AsyncStorage.getItem('userToken')
-          .then(token => {
-            setUserToken(token);
-          })
-          .then(res => {});
+        // AsyncStorage.getItem('profileName')
+        //   .then(uname => {
+        //     setUserProfileName(uname);
+        //   })
+        //   .then(res => {});
+        // AsyncStorage.getItem('userToken')
+        //   .then(token => {
+        //     setUserToken(token);
+        //   })
+        //   .then(res => {});
 
-        AsyncStorage.getItem('userMobile')
-          .then(mobile => {
-            setUserMobile(mobile);
-          })
-          .then(res => {});
+        // AsyncStorage.getItem('userMobile')
+        //   .then(mobile => {
+        //     setUserMobile(mobile);
+        //   })
+        //   .then(res => {});
       }
     }
     return () => {
@@ -343,7 +348,7 @@ const Gallery = ({route, navigation}) => {
                   shadowOpacity: 0.8,
                   shadowRadius: 2,
                   elevation: 5,
-                  borderRadius: 15,
+                  // borderRadius: 15,
                   width: '100%',
                   backgroundColor: 'white',
                   borderRadius: 20,

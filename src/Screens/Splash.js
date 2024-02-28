@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {View, Text, Image, Dimensions, StatusBar} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import jwt_decode from 'jwt-decode';
-import {useDispatch} from 'react-redux';
-import {logout} from '../redux/features/auth/authSlice';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+import {jwtDecode} from 'jwt-decode';
+// import {useDispatch} from 'react-redux';
+// import {logout} from '../redux/features/auth/authSlice';
 import Video from 'react-native-video';
 import videobg from '../videos/bg13.mp4';
 import Animated, {
@@ -12,36 +12,37 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 const Splash = ({navigation}) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    AsyncStorage.getItem('userToken')
-      .then(token => {
-        if (token !== null && token != '') {
-          const decoded = jwt_decode(token);
-          console.log(decoded);
-          let unixTimestampEnd = decoded.exp;
-          let dateEnd = new Date(unixTimestampEnd * 1000) * 60000;
-          if (Date.now() >= dateEnd) {
-            handleLogout(token);
-          } else {
-            setTimeout(() => {
-              navigation.navigate('MainScreen');
-            }, 5000);
-            navigation.closeDrawer();
-          }
-        } else {
-          setTimeout(() => {
-            navigation.navigate('LoginPage');
-          }, 5000);
-        }
-      })
-      .then(res => {});
-  }, []);
-  const handleLogout = token => {
-    dispatch(logout(token));
-    AsyncStorage.clear();
-    navigation.navigate('LoginPage');
-  };
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   AsyncStorage.getItem('userToken')
+  //     .then(token => {
+  //       console.log('token-------------------', token);
+  //       if (token !== null && token != '') {
+  //         const decoded = jwtDecode(token);
+  //         console.log('decoded--------------', decoded);
+  //         let unixTimestampEnd = decoded.exp;
+  //         let dateEnd = new Date(unixTimestampEnd * 1000) * 60000;
+  //         if (Date.now() >= dateEnd) {
+  //           handleLogout(token);
+  //         } else {
+  //           setTimeout(() => {
+  //             navigation.navigate('MainScreen');
+  //           }, 5000);
+  //           navigation.closeDrawer();
+  //         }
+  //       } else {
+  //         setTimeout(() => {
+  //           navigation.navigate('LoginPage');
+  //         }, 5000);
+  //       }
+  //     })
+  //     .then(res => {});
+  // }, []);
+  // const handleLogout = token => {
+  //   dispatch(logout(token));
+  //   AsyncStorage.clear();
+  //   navigation.navigate('LoginPage');
+  // };
 
   return (
     <>

@@ -28,17 +28,19 @@ import {
   SplitBoxText,
   SplitBoxesFocused,
 } from './OtpStyle';
-
-import {useDispatch} from 'react-redux';
-import {login} from '../redux/features/auth/authSlice';
+import {authenticateOTP} from '../services/Services';
+// import {useDispatch} from 'react-redux';
+// import {login} from '../redux/features/auth/authSlice';
 import {Buffer} from 'buffer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useIsFocused} from '@react-navigation/native';
 import Spinner from 'react-native-loading-spinner-overlay';
-
+import {useAuthorization} from '../context/AuthProvider';
+import {setUser, setLoginTime} from '../context/async-storage';
 const OTPPage = ({route, navigation}) => {
   const isFocused = useIsFocused();
   const [isLoader, setIsLoader] = useState(false);
+  const {signIn} = useAuthorization();
   const inputRef = useRef();
   useEffect(() => {
     const backAction = () => {
@@ -59,7 +61,6 @@ const OTPPage = ({route, navigation}) => {
 
   const [otp, setOtp] = useState('');
   const [otpError, setOtpError] = useState('');
-  const dispatch = useDispatch();
   const validate = () => {
     if (code.length === 0) {
       setOtpError('Enter OTP');
@@ -81,26 +82,28 @@ const OTPPage = ({route, navigation}) => {
       };
       var obj = JSON.stringify(postdata);
       var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
-      dispatch(login(postbase64Data))
+      authenticateOTP(postbase64Data)
         .then(data => {
           setIsLoader(false);
           console.log('sign in', data);
-          if (data.payload.outcome == true) {
-            AsyncStorage.setItem('userToken', data.payload.data);
-            AsyncStorage.setItem('userMobile', userName);
-            AsyncStorage.setItem('loginTime', new Date().toString());
+          if (data.outcome === true) {
+            signIn(data.data);
+            setUser(userName);
+            setLoginTime(new Date().toString());
+            // AsyncStorage.setItem('userToken', data.payload.data);
+            // AsyncStorage.setItem('userMobile', userName);
+            // AsyncStorage.setItem('loginTime', new Date().toString());
             //Alert.alert('Success', data.payload.message);
             if (Platform.OS === 'android') {
-              ToastAndroid.show(data.payload.message, ToastAndroid.SHORT);
+              ToastAndroid.show(data.message, ToastAndroid.SHORT);
             } else {
-              AlertIOS.alert(data.payload.message);
+              AlertIOS.alert(data.message);
             }
-            navigation.navigate('MainScreen');
+            navigation.navigate('Home');
           } else {
             setCode('');
-            setOtpError(data.payload.message);
+            setOtpError(data.message);
             setIsInputBoxFocused(true);
-
             // Platform.OS === 'ios'
             //   ? inputRef.current.focus()
             //   : setTimeout(() => inputRef.current.focus(), 40);
