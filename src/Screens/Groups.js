@@ -291,7 +291,7 @@ const Groups = ({route, navigation}) => {
         var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
         getSectionData(postbase64Data, token)
           .then(data => {
-            console.log('fetchSectionData', data.payload);
+            console.log('fetchSectionData', data.data.artifactList[0]);
             if (data.outcome == true) {
               setArtifactList(data.data.artifactList);
             } else {
@@ -734,7 +734,6 @@ const Groups = ({route, navigation}) => {
                                   style={{
                                     width: '100%',
                                     height: 120,
-                                    color: 'black',
                                   }}></Image>
                               </View>
                               <View

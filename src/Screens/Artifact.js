@@ -225,7 +225,7 @@ const Artifact = ({route, navigation}) => {
       var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
       getArtifactData(postbase64Data, token)
         .then(data => {
-          console.log('fetchArtifactData', data.payload);
+          console.log('fetchArtifactData', data);
           if (data.outcome == true && mounted) {
             setArtifactDetials(data.data.artifact);
             var artifacData = data.data.artifact;
