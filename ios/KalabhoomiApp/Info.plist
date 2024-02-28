@@ -26,9 +26,18 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-	  <!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>odishacraftsmuseum.odisha.gov.in</key>
+			<dict>
+				<key>NSAllowIncesureHTTPLoads</key>
+				<true/>
+				<key>NSIncludeSubdomais</key>
+				<true/>
+			</dict>
+		</dict>
 		<key>NSAllowsArbitraryLoads</key>
-		<false/>
+		<true/>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
