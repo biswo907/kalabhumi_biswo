@@ -10,13 +10,18 @@ export const generateOTP = data => {
       certs: ['mycert'],
     },
   };
+  console.log("BEFORE PROMISE----")
   return new Promise((resolve, reject) => {
     fetch(apiUrl + '/allowAll/generate-otp', requestOptions)
-      .then(response => response.json())
+      .then(response => {
+        console.log(response)
+         return response.json()})
       .then(json => {
         resolve(json);
       })
-      .catch(error => reject(error));
+      .catch(error => {
+        console.log(error)
+        return reject(error)});
     // .finally(() => );
   });
 };

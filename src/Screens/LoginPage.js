@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -17,9 +17,9 @@ import {
 } from 'react-native';
 // import {useDispatch} from 'react-redux';
 // import {loginmobile} from '../redux/features/auth/authSlice';
-import {generateOTP} from '../services/Services';
+import { generateOTP } from '../services/Services';
 import Spinner from 'react-native-loading-spinner-overlay';
-import {Buffer} from 'buffer';
+import { Buffer } from 'buffer';
 import Video from 'react-native-video';
 import videobg from '../videos/bg1.mp4';
 import Animated, {
@@ -29,7 +29,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 const phoneInputPattern = /[6789][0-9]{9}/;
-const LoginPage = ({navigation}) => {
+const LoginPage = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [otpCounter, setOtpCounter] = useState(60);
@@ -49,7 +49,7 @@ const LoginPage = ({navigation}) => {
           onPress: () => null,
           style: 'cancel',
         },
-        {text: 'YES', onPress: () => BackHandler.exitApp()},
+        { text: 'YES', onPress: () => BackHandler.exitApp() },
       ]);
       return true;
     };
@@ -125,9 +125,11 @@ const LoginPage = ({navigation}) => {
     setUsernameError('');
     if (validate()) {
       console.log('sign in', username);
-      var postdata = {userName: username};
+      var postdata = { userName: username };
+      console.log("postdata-----", postdata)
       var obj = JSON.stringify(postdata);
       var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
+      console.log("baSE64DATA----", postbase64Data)
       generateOTP(postbase64Data)
         .then(data => {
           console.log('OTPRESPONSE-----------', data);
@@ -139,7 +141,7 @@ const LoginPage = ({navigation}) => {
             if (Platform.OS === 'android') {
               ToastAndroid.show(data.message, ToastAndroid.SHORT);
             } else {
-              AlertIOS.alert(data.message);
+              Alert(data.message);
             }
             navigation.navigate('OTPPage', {
               password: data.data,
@@ -204,7 +206,7 @@ const LoginPage = ({navigation}) => {
           <Image
             source={require('../images/logo_homesc.png')}
             resizeMode="contain"
-            style={{width: 80, height: 60}}
+            style={{ width: 80, height: 60 }}
           />
           <Text
             style={{
@@ -225,22 +227,23 @@ const LoginPage = ({navigation}) => {
               autoCorrect={false}
               keyboardType="phone-pad"
               maxLength={10}
-              pattern={phoneInputPattern}
+              // pattern={phoneInputPattern}
               value={username}
               onChangeText={value => {
-                setUsername(value.replace(/[^0-9]/g, ''));
+                // setUsername(value.replace(/[^0-9]/g, ''));
+                setUsername(value)
                 setUsernameError('');
               }}
             />
           </View>
           {usernameError.length > 0 && (
             <Text
-              style={{color: 'red', alignSelf: 'flex-start', marginLeft: 25}}>
+              style={{ color: 'red', alignSelf: 'flex-start', marginLeft: 25 }}>
               {usernameError}
             </Text>
           )}
           {startCount && otpCounter > 0 && (
-            <Text style={{fontSize: 18, fontWeight: '600'}}>
+            <Text style={{ fontSize: 18, fontWeight: '600' }}>
               please wait for {otpCounter} seconds to try again
             </Text>
           )}
@@ -250,7 +253,7 @@ const LoginPage = ({navigation}) => {
               setIsLoader(true);
               handleSignin();
             }}>
-            <Text style={{color: 'white', fontSize: 20}}>NEXT</Text>
+            <Text style={{ color: 'white', fontSize: 20 }}>NEXT</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
