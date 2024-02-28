@@ -141,7 +141,7 @@ const LoginPage = ({ navigation }) => {
             if (Platform.OS === 'android') {
               ToastAndroid.show(data.message, ToastAndroid.SHORT);
             } else {
-              Alert(data.message);
+              Alert.alert(data.message);
             }
             navigation.navigate('OTPPage', {
               password: data.data,

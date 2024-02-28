@@ -97,7 +97,7 @@ const OTPPage = ({route, navigation}) => {
             if (Platform.OS === 'android') {
               ToastAndroid.show(data.message, ToastAndroid.SHORT);
             } else {
-              AlertIOS.alert(data.message);
+              Alert.alert(data.message);
             }
             navigation.navigate('Home');
           } else {
