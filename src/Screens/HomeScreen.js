@@ -524,7 +524,7 @@ const HomeScreen = ({navigation}) => {
                 style={{
                   width: '100%',
                   height: 150,
-                  resizeMode: 'contain',
+                  resizeMode: 'cover',
                   borderTopLeftRadius: 10,
                   borderTopRightRadius: 10,
                 }}
