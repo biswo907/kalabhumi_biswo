@@ -13,6 +13,8 @@ import Gallery from './Screens/Gallery';
 import ProfilePage from './Screens/ProfilePage';
 import TestAlertRa from './Screens/TestAlertRa';
 import {useAuthorization} from './context/AuthProvider';
+import {store} from './redux/store';
+import {Provider} from 'react-redux';
 const Stack = createStackNavigator();
 // const AppNavigator = () => {
 //   return (
@@ -92,6 +94,7 @@ function AuthScreens() {
 }
 const MainStackNavigator = () => {
   const {status, authToken} = useAuthorization();
+  // alert('sttatus' + status);
   // console.log(status);
   return (
     <Stack.Navigator
@@ -128,9 +131,11 @@ const MainStackNavigator = () => {
 };
 export const AppNavigator = () => {
   return (
-    <NavigationContainer>
-      <MainStackNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <MainStackNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 };
 export default AppNavigator;

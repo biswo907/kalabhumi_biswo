@@ -24,6 +24,7 @@ const imageBaseUrl = 'http://209.97.136.18:8080/kalabhoomi';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Video from 'react-native-video';
 import videobg from '../videos/bg13.mp4';
+import {useAuthorization} from '../context/AuthProvider';
 const ScannerPage = ({route, navigation}) => {
   const [scan, setScan] = useState('');
   const [ScanResult, setScanResult] = useState('');
@@ -31,6 +32,7 @@ const ScannerPage = ({route, navigation}) => {
   // const dispatch = useDispatch();
   const {token} = route.params;
   const [isLoader, setIsLoader] = useState(false);
+  const {status, authToken} = useAuthorization();
   //const token_data = useSelector(state => state.auth.login);
   useEffect(() => {
     const backAction = () => {
@@ -58,7 +60,7 @@ const ScannerPage = ({route, navigation}) => {
     var postdata = {qrCode: theCode};
     var obj = JSON.stringify(postdata);
     var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
-    console.log('AJAY BASE^$........', postbase64Data);
+    console.log('AJAY BASE^$........', postbase64Data, token);
     getQRCodeData(postbase64Data, token)
       .then(response => {
         console.log('DATA PAYLOAD', response);
@@ -189,8 +191,28 @@ const ScannerPage = ({route, navigation}) => {
         console.log('error', error);
       });
   };
+
+  const checkLoggedin = () => {
+    if (status === 'signOut' || status === 'idle') {
+      // alert('User not Logged in');
+
+      Alert.alert('Login', 'Please login to access all the features', [
+        {
+          text: 'Cancel',
+          onPress: () => null,
+          style: 'cancel',
+        },
+        {text: 'Proceed', onPress: () => navigation.replace('LoginPage')},
+      ]);
+    } else {
+      setScan(true);
+      // alert('user logged in');
+    }
+  };
+
   const activeQR = () => {
     setScan(true);
+    // checkLoggedin();
   };
   const scanAgain = () => {
     setScan(true);

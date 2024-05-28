@@ -12,6 +12,7 @@ import {
   BackHandler,
   ToastAndroid,
   Platform,
+  KeyboardAvoidingView,
 } from 'react-native';
 import Video from 'react-native-video';
 import videobg from '../videos/bg1.mp4';
@@ -32,7 +33,7 @@ import {authenticateOTP} from '../services/Services';
 // import {useDispatch} from 'react-redux';
 // import {login} from '../redux/features/auth/authSlice';
 import {Buffer} from 'buffer';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useIsFocused} from '@react-navigation/native';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {useAuthorization} from '../context/AuthProvider';
@@ -85,14 +86,14 @@ const OTPPage = ({route, navigation}) => {
       authenticateOTP(postbase64Data)
         .then(data => {
           setIsLoader(false);
-          console.log('sign in', data);
+          console.log('sign in2', data);
           if (data.outcome === true) {
             signIn(data.data);
             setUser(userName);
             setLoginTime(new Date().toString());
-            // AsyncStorage.setItem('userToken', data.payload.data);
-            // AsyncStorage.setItem('userMobile', userName);
-            // AsyncStorage.setItem('loginTime', new Date().toString());
+            AsyncStorage.setItem('userToken', data?.data);
+            AsyncStorage.setItem('userMobile', userName);
+            AsyncStorage.setItem('loginTime', new Date().toString());
             //Alert.alert('Success', data.payload.message);
             if (Platform.OS === 'android') {
               ToastAndroid.show(data.message, ToastAndroid.SHORT);
@@ -162,7 +163,7 @@ const OTPPage = ({route, navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
       {isLoader && <Spinner visible={true} color="#A4451F" />}
       <Video
         source={videobg}
@@ -246,7 +247,7 @@ const OTPPage = ({route, navigation}) => {
         </View>
       </SafeAreaView>
       {/* </ImageBackground> */}
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 export default OTPPage;

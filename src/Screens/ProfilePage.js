@@ -102,9 +102,12 @@ const ProfilePage = ({route, navigation}) => {
   const [editMail, setEditMail] = useState(false);
 
   useEffect(() => {
+    alert('focused');
     if (isFocused) {
       setStates([]);
       var stId = 0;
+
+      console.log('fetch user called', token);
 
       dispatch(fetchUser(token))
         .then(data => {
@@ -143,6 +146,7 @@ const ProfilePage = ({route, navigation}) => {
               setStateId(userGetProfileData.state);
               getAllStates(userGetProfileData.state);
             } else {
+              console.log('aaabbb', stId);
               getAllStates(stId);
             }
 
@@ -173,6 +177,7 @@ const ProfilePage = ({route, navigation}) => {
   };
 
   const getAllStates = stId => {
+    console.log('get all state called', stId);
     dispatch(getAllState(token))
       .then(data => {
         if (data.payload.outcome == true) {
@@ -219,6 +224,7 @@ const ProfilePage = ({route, navigation}) => {
   };
 
   const handleUserUpdate = () => {
+    console.log('handle user update called');
     if (validate()) {
       setEditButtonHide('flex');
       setSaveButtonHide('none');
@@ -259,7 +265,7 @@ const ProfilePage = ({route, navigation}) => {
       };
       var obj = JSON.stringify(postdata);
       var postbase64Data = Buffer.from(obj, 'utf-8').toString('base64');
-      console.log('postbase64Data', postbase64Data);
+      console.log('postbase64Data', postbase64Data, obj);
       dispatch(updateUser({postbase64Data, token}))
         .then(data => {
           setIsLoader(false);

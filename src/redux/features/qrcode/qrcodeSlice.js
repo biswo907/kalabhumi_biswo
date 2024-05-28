@@ -113,7 +113,10 @@ export const fetchAllGalleryData = createAsyncThunk(
           certs: ['mycert'],
         },
       };
-      const response = await fetch(apiUrl + '/mst/all-gallery', requestOptions);
+      const response = await fetch(
+        apiUrl + '/allowAll/mst/all-gallery',
+        requestOptions,
+      );
       const responseData = await response.json();
       return responseData;
     } catch (error) {

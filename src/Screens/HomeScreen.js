@@ -66,14 +66,11 @@ const HomeScreen = ({navigation}) => {
   useEffect(() => {
     let mounted = true;
     console.log('token ............................', token);
-    token &&
-      typeof token !== 'undefined' &&
-      getGalleryData(token).then(response => {
-        response &&
-          response.data &&
-          mounted &&
-          setAllGalleryData(response.data);
-      });
+
+    getGalleryData(token).then(response => {
+      console.log('gallery data ', response.data);
+      response && response.data && mounted && setAllGalleryData(response.data);
+    });
     return () => {
       mounted = false;
     };
@@ -277,17 +274,21 @@ const HomeScreen = ({navigation}) => {
                   scrollEnabled={false}
                   arrowSize={20}
                   dataSource={[
-                    {url: require('../images/01-min.jpg')},
-                    {url: require('../images/02-min.jpg')},
-                    {url: require('../images/03-min.jpg')},
-                    {url: require('../images/04-min.jpg')},
-                    {url: require('../images/05-min.jpg')},
-                    {url: require('../images/06-min.jpg')},
-                    {url: require('../images/07-min.jpg')},
+                    {url: require('../images/1.jpg')},
+                    {url: require('../images/2.jpg')},
+                    {url: require('../images/3.jpg')},
+                    {url: require('../images/4.jpg')},
+                    {url: require('../images/5.jpg')},
+                    {url: require('../images/6.jpg')},
+                    {url: require('../images/7.jpg')},
+                    {url: require('../images/8.jpg')},
+                    {url: require('../images/9.jpg')},
+                    {url: require('../images/10.jpg')},
+                    {url: require('../images/11.jpg')},
                   ]}
                 />
               </View>
-              <View
+              {/* <View
                 style={{
                   flexDirection: 'row',
                   alignSelf: 'center',
@@ -296,6 +297,7 @@ const HomeScreen = ({navigation}) => {
                   justifyContent: 'center',
                   alignItems: 'center',
                   marginVertical: 20,
+                  backgroundColor: 'red',
                 }}>
                 <View
                   style={{
@@ -341,7 +343,7 @@ const HomeScreen = ({navigation}) => {
                     // elevation: 2,
                   }}
                 />
-              </View>
+              </View> */}
               <View
                 style={{
                   alignItems: 'flex-start',
@@ -452,7 +454,9 @@ const HomeScreen = ({navigation}) => {
                             uri:
                               imageBaseUrl +
                               '/api/allowAll/image/viewDocuments?moduleName=GALLERY&filePath=' +
-                              encodeURIComponent(gdata.galleryDisplayImagePath.trim()).toString(),
+                              encodeURIComponent(
+                                gdata.galleryDisplayImagePath.trim(),
+                              ).toString(),
                           }}></ImageBackground>
                         <View
                           style={{

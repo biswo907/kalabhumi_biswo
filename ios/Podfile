@@ -1,12 +1,40 @@
-# Resolve react_native_pods.rb with node to allow for hoisting
-require Pod::Executable.execute_command('node', ['-p',
-  'require.resolve(
-    "react-native/scripts/react_native_pods.rb",
-    {paths: [process.argv[1]]},
-  )', __dir__]).strip
+ def node_require(script)
+   # Resolve script with node to allow for hoisting
+   require Pod::Executable.execute_command('node', ['-p',
+     "require.resolve(
+       '#{script}',
+       {paths: [process.argv[1]]},
+     )", __dir__]).strip
+ end
+
+ node_require('react-native/scripts/react_native_pods.rb')
+ node_require('react-native-permissions/scripts/setup.rb')
 
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
+
+setup_permissions([
+  # 'AppTrackingTransparency',
+  # 'Bluetooth',
+  # 'Calendars',
+  # 'CalendarsWriteOnly',
+  'Camera',
+  # 'Contacts',
+  # 'FaceID',
+  # 'LocationAccuracy',
+  # 'LocationAlways',
+  # 'LocationWhenInUse',
+  # 'MediaLibrary',
+  # 'Microphone',
+  # 'Motion',
+  # 'Notifications',
+  # 'PhotoLibrary',
+  # 'PhotoLibraryAddOnly',
+  # 'Reminders',
+  # 'Siri',
+  # 'SpeechRecognition',
+  # 'StoreKit',
+])
 
 # If you are using a `react-native-flipper` your iOS build will fail when `NO_FLIPPER=1` is set.
 # because `react-native-flipper` depends on (FlipperKit,...) that will be excluded
@@ -27,6 +55,7 @@ end
 
 target 'KalabhoomiApp' do
   config = use_native_modules!
+  pod 'TrustKit'
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -46,6 +75,19 @@ target 'KalabhoomiApp' do
 
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+    installer.pods_project.targets.each do |target|
+      if target.name == 'Flipper'
+        file_path = 'Pods/Flipper/xplat/Flipper/FlipperTransportTypes.h'
+        contents = File.read(file_path)
+        unless contents.include?('#include <functional>')
+          File.chmod(0755, file_path)
+          File.open(file_path, 'w') do |file|
+            file.puts('#include <functional>')
+            file.puts(contents)
+          end
+        end
+      end
+    end
     react_native_post_install(
       installer,
       config[:reactNativePath],

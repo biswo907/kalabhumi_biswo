@@ -157,7 +157,7 @@ export const getAllStateSSSSS = createAsyncThunk('getAllState', async token => {
 
 export const updateUser = createAsyncThunk('updateUser', async data => {
   try {
-    console.log('Update Profile data', data.postbase64Data);
+    console.log('Update Profile data', data, data.postbase64Data);
     const requestOptions = {
       method: 'POST',
       headers: {

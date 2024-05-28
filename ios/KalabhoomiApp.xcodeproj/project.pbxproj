@@ -8,14 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* KalabhoomiAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* KalabhoomiAppTests.m */; };
-		08FFAC0338D0073013A99422 /* libPods-KalabhoomiApp-KalabhoomiAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90FBAD7A6FCA648EA7FED605 /* libPods-KalabhoomiApp-KalabhoomiAppTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		40306AFC2BAEE06F00E9D40B /* mycert.cer in Resources */ = {isa = PBXBuildFile; fileRef = 40306AFB2BAEE06F00E9D40B /* mycert.cer */; };
+		40F846162BB5D38A009D7DFD /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845DC2BB5D19C009D7DFD /* AntDesign.ttf */; };
+		40F846172BB5D6C5009D7DFD /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845DD2BB5D19C009D7DFD /* Entypo.ttf */; };
+		40F846182BB5D6C5009D7DFD /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845DE2BB5D19C009D7DFD /* EvilIcons.ttf */; };
+		40F846192BB5D6C5009D7DFD /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845DF2BB5D19C009D7DFD /* Feather.ttf */; };
+		40F8461A2BB5D6C5009D7DFD /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845E02BB5D19C009D7DFD /* FontAwesome.ttf */; };
+		40F8461B2BB5D6C5009D7DFD /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845E12BB5D19C009D7DFD /* FontAwesome5_Brands.ttf */; };
+		40F8461C2BB5D6C5009D7DFD /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845E22BB5D19C009D7DFD /* FontAwesome5_Regular.ttf */; };
+		40F8461D2BB5D6C5009D7DFD /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845E32BB5D19C009D7DFD /* FontAwesome5_Solid.ttf */; };
+		40F8461E2BB5D6C5009D7DFD /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845E42BB5D19C009D7DFD /* FontAwesome6_Brands.ttf */; };
+		40F8461F2BB5D6C5009D7DFD /* FontAwesome6_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845E52BB5D19C009D7DFD /* FontAwesome6_Regular.ttf */; };
+		40F846202BB5D6C5009D7DFD /* FontAwesome6_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845E62BB5D19C009D7DFD /* FontAwesome6_Solid.ttf */; };
+		40F846212BB5D6C5009D7DFD /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845E72BB5D19C009D7DFD /* Fontisto.ttf */; };
+		40F846222BB5D6C5009D7DFD /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845E82BB5D19C009D7DFD /* Foundation.ttf */; };
+		40F846232BB5D6C5009D7DFD /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845E92BB5D19C009D7DFD /* Ionicons.ttf */; };
+		40F846242BB5D6C5009D7DFD /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845EA2BB5D19C009D7DFD /* MaterialCommunityIcons.ttf */; };
+		40F846252BB5D6C5009D7DFD /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845EB2BB5D19C009D7DFD /* MaterialIcons.ttf */; };
+		40F846262BB5D6C5009D7DFD /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845EC2BB5D19C009D7DFD /* Octicons.ttf */; };
+		40F846272BB5D6C5009D7DFD /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845ED2BB5D19C009D7DFD /* SimpleLineIcons.ttf */; };
+		40F846282BB5D6C5009D7DFD /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40F845EE2BB5D19C009D7DFD /* Zocial.ttf */; };
 		6BE6C4D92B8FC63B00294BDA /* private.key in Resources */ = {isa = PBXBuildFile; fileRef = 6BE6C4D82B8FC63B00294BDA /* private.key */; };
-		6BE6C4DB2B8FD09B00294BDA /* mycert.cer in Resources */ = {isa = PBXBuildFile; fileRef = 6BE6C4DA2B8FD09B00294BDA /* mycert.cer */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		94C7164932F9635B3021FB7B /* libPods-KalabhoomiApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD233CD132E03A776CC0FBC /* libPods-KalabhoomiApp.a */; };
+		C25346C67A1B0BC2BF9074A5 /* libPods-KalabhoomiApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D2BBC811C924A8249DEBDF /* libPods-KalabhoomiApp.a */; };
+		CB8324245652512A25F3A7D2 /* libPods-KalabhoomiApp-KalabhoomiAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F9CB6C69B6B5A4EB1104BC /* libPods-KalabhoomiApp-KalabhoomiAppTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,22 +51,41 @@
 		00E356EE1AD99517003FC87E /* KalabhoomiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KalabhoomiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* KalabhoomiAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KalabhoomiAppTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* KalabhoomiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KalabhoomiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09034B115C9DADEB2B91B376 /* Pods-KalabhoomiApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KalabhoomiApp.release.xcconfig"; path = "Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp.release.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Kalabhoomi e-Tour Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kalabhoomi e-Tour Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = KalabhoomiApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = KalabhoomiApp/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = KalabhoomiApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = KalabhoomiApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = KalabhoomiApp/main.m; sourceTree = "<group>"; };
-		172EF8C190CA15C0F0DDBA98 /* Pods-KalabhoomiApp-KalabhoomiAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KalabhoomiApp-KalabhoomiAppTests.debug.xcconfig"; path = "Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5BC8B31EF59D91B165F3C94E /* Pods-KalabhoomiApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KalabhoomiApp.release.xcconfig"; path = "Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp.release.xcconfig"; sourceTree = "<group>"; };
+		299B206BF1C886AEBF72B797 /* Pods-KalabhoomiApp-KalabhoomiAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KalabhoomiApp-KalabhoomiAppTests.release.xcconfig"; path = "Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		40306AFB2BAEE06F00E9D40B /* mycert.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = mycert.cer; path = ../../../../Downloads/mycert.cer; sourceTree = "<group>"; };
+		40F845DC2BB5D19C009D7DFD /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
+		40F845DD2BB5D19C009D7DFD /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
+		40F845DE2BB5D19C009D7DFD /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
+		40F845DF2BB5D19C009D7DFD /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
+		40F845E02BB5D19C009D7DFD /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		40F845E12BB5D19C009D7DFD /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		40F845E22BB5D19C009D7DFD /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		40F845E32BB5D19C009D7DFD /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
+		40F845E42BB5D19C009D7DFD /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
+		40F845E52BB5D19C009D7DFD /* FontAwesome6_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Regular.ttf; sourceTree = "<group>"; };
+		40F845E62BB5D19C009D7DFD /* FontAwesome6_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Solid.ttf; sourceTree = "<group>"; };
+		40F845E72BB5D19C009D7DFD /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
+		40F845E82BB5D19C009D7DFD /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
+		40F845E92BB5D19C009D7DFD /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		40F845EA2BB5D19C009D7DFD /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		40F845EB2BB5D19C009D7DFD /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		40F845EC2BB5D19C009D7DFD /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		40F845ED2BB5D19C009D7DFD /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
+		40F845EE2BB5D19C009D7DFD /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		4F58D1BC4176BBFFF0E1EF9A /* Pods-KalabhoomiApp-KalabhoomiAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KalabhoomiApp-KalabhoomiAppTests.debug.xcconfig"; path = "Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		51F9CB6C69B6B5A4EB1104BC /* libPods-KalabhoomiApp-KalabhoomiAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KalabhoomiApp-KalabhoomiAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63D2BBC811C924A8249DEBDF /* libPods-KalabhoomiApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KalabhoomiApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE6C4D82B8FC63B00294BDA /* private.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = private.key; sourceTree = "<group>"; };
-		6BE6C4DA2B8FD09B00294BDA /* mycert.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = mycert.cer; path = ../../../../../../Desktop/mycert.cer; sourceTree = "<group>"; };
-		7AD233CD132E03A776CC0FBC /* libPods-KalabhoomiApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KalabhoomiApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = KalabhoomiApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		90FBAD7A6FCA648EA7FED605 /* libPods-KalabhoomiApp-KalabhoomiAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KalabhoomiApp-KalabhoomiAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C37C6D9FCB5EA6D402118F82 /* Pods-KalabhoomiApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KalabhoomiApp.debug.xcconfig"; path = "Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C3579A1E8E35C30F3BB934C7 /* Pods-KalabhoomiApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KalabhoomiApp.debug.xcconfig"; path = "Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FB2471A9D003E8851C7094F3 /* Pods-KalabhoomiApp-KalabhoomiAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KalabhoomiApp-KalabhoomiAppTests.release.xcconfig"; path = "Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08FFAC0338D0073013A99422 /* libPods-KalabhoomiApp-KalabhoomiAppTests.a in Frameworks */,
+				CB8324245652512A25F3A7D2 /* libPods-KalabhoomiApp-KalabhoomiAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94C7164932F9635B3021FB7B /* libPods-KalabhoomiApp.a in Frameworks */,
+				C25346C67A1B0BC2BF9074A5 /* libPods-KalabhoomiApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +128,7 @@
 		13B07FAE1A68108700A75B9A /* KalabhoomiApp */ = {
 			isa = PBXGroup;
 			children = (
+				40F845EF2BB5D19C009D7DFD /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -104,10 +143,37 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				7AD233CD132E03A776CC0FBC /* libPods-KalabhoomiApp.a */,
-				90FBAD7A6FCA648EA7FED605 /* libPods-KalabhoomiApp-KalabhoomiAppTests.a */,
+				63D2BBC811C924A8249DEBDF /* libPods-KalabhoomiApp.a */,
+				51F9CB6C69B6B5A4EB1104BC /* libPods-KalabhoomiApp-KalabhoomiAppTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		40F845EF2BB5D19C009D7DFD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				40F845DC2BB5D19C009D7DFD /* AntDesign.ttf */,
+				40F845DD2BB5D19C009D7DFD /* Entypo.ttf */,
+				40F845DE2BB5D19C009D7DFD /* EvilIcons.ttf */,
+				40F845DF2BB5D19C009D7DFD /* Feather.ttf */,
+				40F845E02BB5D19C009D7DFD /* FontAwesome.ttf */,
+				40F845E12BB5D19C009D7DFD /* FontAwesome5_Brands.ttf */,
+				40F845E22BB5D19C009D7DFD /* FontAwesome5_Regular.ttf */,
+				40F845E32BB5D19C009D7DFD /* FontAwesome5_Solid.ttf */,
+				40F845E42BB5D19C009D7DFD /* FontAwesome6_Brands.ttf */,
+				40F845E52BB5D19C009D7DFD /* FontAwesome6_Regular.ttf */,
+				40F845E62BB5D19C009D7DFD /* FontAwesome6_Solid.ttf */,
+				40F845E72BB5D19C009D7DFD /* Fontisto.ttf */,
+				40F845E82BB5D19C009D7DFD /* Foundation.ttf */,
+				40F845E92BB5D19C009D7DFD /* Ionicons.ttf */,
+				40F845EA2BB5D19C009D7DFD /* MaterialCommunityIcons.ttf */,
+				40F845EB2BB5D19C009D7DFD /* MaterialIcons.ttf */,
+				40F845EC2BB5D19C009D7DFD /* Octicons.ttf */,
+				40F845ED2BB5D19C009D7DFD /* SimpleLineIcons.ttf */,
+				40F845EE2BB5D19C009D7DFD /* Zocial.ttf */,
+			);
+			name = Fonts;
+			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -120,7 +186,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				6BE6C4DA2B8FD09B00294BDA /* mycert.cer */,
+				40306AFB2BAEE06F00E9D40B /* mycert.cer */,
 				6BE6C4D82B8FC63B00294BDA /* private.key */,
 				13B07FAE1A68108700A75B9A /* KalabhoomiApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -137,7 +203,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* KalabhoomiApp.app */,
+				13B07F961A680F5B00A75B9A /* Kalabhoomi e-Tour Guide.app */,
 				00E356EE1AD99517003FC87E /* KalabhoomiAppTests.xctest */,
 			);
 			name = Products;
@@ -146,10 +212,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C37C6D9FCB5EA6D402118F82 /* Pods-KalabhoomiApp.debug.xcconfig */,
-				5BC8B31EF59D91B165F3C94E /* Pods-KalabhoomiApp.release.xcconfig */,
-				172EF8C190CA15C0F0DDBA98 /* Pods-KalabhoomiApp-KalabhoomiAppTests.debug.xcconfig */,
-				FB2471A9D003E8851C7094F3 /* Pods-KalabhoomiApp-KalabhoomiAppTests.release.xcconfig */,
+				C3579A1E8E35C30F3BB934C7 /* Pods-KalabhoomiApp.debug.xcconfig */,
+				09034B115C9DADEB2B91B376 /* Pods-KalabhoomiApp.release.xcconfig */,
+				4F58D1BC4176BBFFF0E1EF9A /* Pods-KalabhoomiApp-KalabhoomiAppTests.debug.xcconfig */,
+				299B206BF1C886AEBF72B797 /* Pods-KalabhoomiApp-KalabhoomiAppTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -161,12 +227,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "KalabhoomiAppTests" */;
 			buildPhases = (
-				02BDCCE54C0934EA23429671 /* [CP] Check Pods Manifest.lock */,
+				0FB99847CF6ECB28FFA55C9A /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				04BB9E03AAA7E705C2D0B529 /* [CP] Embed Pods Frameworks */,
-				D8735D14B8218968567A24CF /* [CP] Copy Pods Resources */,
+				3F6F8EEA472E25ABC3D70F88 /* [CP] Embed Pods Frameworks */,
+				5887A33A15B72E88391D2737 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,13 +248,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "KalabhoomiApp" */;
 			buildPhases = (
-				A8919758A35557F39749862F /* [CP] Check Pods Manifest.lock */,
+				271876394E7E50F76AEB6B67 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				3C038FFB49B4F29F035D52DA /* [CP] Embed Pods Frameworks */,
-				A0C4F7A47472A05783AC1FDD /* [CP] Copy Pods Resources */,
+				E7A3ADC6E6662171C6BD5E2A /* [CP] Embed Pods Frameworks */,
+				B2A9CFA6F492CDC1E668AA73 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,7 +262,7 @@
 			);
 			name = KalabhoomiApp;
 			productName = KalabhoomiApp;
-			productReference = 13B07F961A680F5B00A75B9A /* KalabhoomiApp.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Kalabhoomi e-Tour Guide.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -247,9 +313,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40F846172BB5D6C5009D7DFD /* Entypo.ttf in Resources */,
+				40F846182BB5D6C5009D7DFD /* EvilIcons.ttf in Resources */,
+				40F846192BB5D6C5009D7DFD /* Feather.ttf in Resources */,
+				40F8461A2BB5D6C5009D7DFD /* FontAwesome.ttf in Resources */,
+				40F8461B2BB5D6C5009D7DFD /* FontAwesome5_Brands.ttf in Resources */,
+				40F8461C2BB5D6C5009D7DFD /* FontAwesome5_Regular.ttf in Resources */,
+				40F8461D2BB5D6C5009D7DFD /* FontAwesome5_Solid.ttf in Resources */,
+				40F8461E2BB5D6C5009D7DFD /* FontAwesome6_Brands.ttf in Resources */,
+				40F8461F2BB5D6C5009D7DFD /* FontAwesome6_Regular.ttf in Resources */,
+				40F846202BB5D6C5009D7DFD /* FontAwesome6_Solid.ttf in Resources */,
+				40F846212BB5D6C5009D7DFD /* Fontisto.ttf in Resources */,
+				40F846222BB5D6C5009D7DFD /* Foundation.ttf in Resources */,
+				40F846232BB5D6C5009D7DFD /* Ionicons.ttf in Resources */,
+				40F846242BB5D6C5009D7DFD /* MaterialCommunityIcons.ttf in Resources */,
+				40F846252BB5D6C5009D7DFD /* MaterialIcons.ttf in Resources */,
+				40F846262BB5D6C5009D7DFD /* Octicons.ttf in Resources */,
+				40F846272BB5D6C5009D7DFD /* SimpleLineIcons.ttf in Resources */,
+				40F846282BB5D6C5009D7DFD /* Zocial.ttf in Resources */,
+				40F846162BB5D38A009D7DFD /* AntDesign.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				6BE6C4D92B8FC63B00294BDA /* private.key in Resources */,
-				6BE6C4DB2B8FD09B00294BDA /* mycert.cer in Resources */,
+				40306AFC2BAEE06F00E9D40B /* mycert.cer in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,7 +358,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		02BDCCE54C0934EA23429671 /* [CP] Check Pods Manifest.lock */ = {
+		0FB99847CF6ECB28FFA55C9A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -295,58 +380,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		04BB9E03AAA7E705C2D0B529 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3C038FFB49B4F29F035D52DA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A0C4F7A47472A05783AC1FDD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A8919758A35557F39749862F /* [CP] Check Pods Manifest.lock */ = {
+		271876394E7E50F76AEB6B67 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -368,7 +402,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D8735D14B8218968567A24CF /* [CP] Copy Pods Resources */ = {
+		3F6F8EEA472E25ABC3D70F88 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5887A33A15B72E88391D2737 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -383,6 +434,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp-KalabhoomiAppTests/Pods-KalabhoomiApp-KalabhoomiAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2A9CFA6F492CDC1E668AA73 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7A3ADC6E6662171C6BD5E2A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KalabhoomiApp/Pods-KalabhoomiApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -418,7 +503,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 172EF8C190CA15C0F0DDBA98 /* Pods-KalabhoomiApp-KalabhoomiAppTests.debug.xcconfig */;
+			baseConfigurationReference = 4F58D1BC4176BBFFF0E1EF9A /* Pods-KalabhoomiApp-KalabhoomiAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -445,7 +530,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB2471A9D003E8851C7094F3 /* Pods-KalabhoomiApp-KalabhoomiAppTests.release.xcconfig */;
+			baseConfigurationReference = 299B206BF1C886AEBF72B797 /* Pods-KalabhoomiApp-KalabhoomiAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -469,11 +554,12 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C37C6D9FCB5EA6D402118F82 /* Pods-KalabhoomiApp.debug.xcconfig */;
+			baseConfigurationReference = C3579A1E8E35C30F3BB934C7 /* Pods-KalabhoomiApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = S5VSD5N7YL;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = KalabhoomiApp/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
@@ -487,8 +573,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = KalabhoomiApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.odishacraftsmuseum.kalabhoomi;
+				PRODUCT_NAME = "Kalabhoomi e-Tour Guide";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -497,11 +583,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BC8B31EF59D91B165F3C94E /* Pods-KalabhoomiApp.release.xcconfig */;
+			baseConfigurationReference = 09034B115C9DADEB2B91B376 /* Pods-KalabhoomiApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = S5VSD5N7YL;
 				INFOPLIST_FILE = KalabhoomiApp/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -514,8 +601,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = KalabhoomiApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.odishacraftsmuseum.kalabhoomi;
+				PRODUCT_NAME = "Kalabhoomi e-Tour Guide";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

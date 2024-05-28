@@ -4,24 +4,27 @@ const apiUrl = APIURL.apiUrl;
 export const generateOTP = data => {
   const requestOptions = {
     method: 'POST',
+    pkPinning: true,
     headers: {'Content-Type': 'text/plain'},
     body: data,
     sslPinning: {
       certs: ['mycert'],
     },
   };
-  console.log("BEFORE PROMISE----")
+  console.log('BEFORE PROMISE----', apiUrl, requestOptions);
   return new Promise((resolve, reject) => {
     fetch(apiUrl + '/allowAll/generate-otp', requestOptions)
       .then(response => {
-        console.log(response)
-         return response.json()})
+        console.log(response);
+        return response.json();
+      })
       .then(json => {
         resolve(json);
       })
       .catch(error => {
-        console.log(error)
-        return reject(error)});
+        console.log(error);
+        return reject(error);
+      });
     // .finally(() => );
   });
 };
@@ -102,7 +105,7 @@ export const getGalleryData = token => {
     },
   };
   return new Promise((resolve, reject) => {
-    fetch(apiUrl + '/mst/all-gallery', requestOptions)
+    fetch(apiUrl + '/allowAll/mst/all-gallery', requestOptions)
       .then(response => response.json())
       .then(json => {
         // console.log(json);
